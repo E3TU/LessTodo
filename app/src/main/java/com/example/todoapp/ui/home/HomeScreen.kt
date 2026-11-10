@@ -9,9 +9,13 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -24,13 +28,9 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -62,8 +62,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -75,38 +77,19 @@ import com.example.todoapp.ui.todo.Todo
 import com.example.todoapp.ui.todo.TodoViewModel
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(selectedTab: Destination, viewModel: TodoViewModel = viewModel()) {
+fun HomeScreen(
+    selectedTab: Destination,
+    contentPadding: PaddingValues,
+    viewModel: TodoViewModel = viewModel()
+) {
     val todos by viewModel.todos.collectAsStateWithLifecycle()
     var showBottomSheet by remember { mutableStateOf(false) }
     var editingTodo by remember { mutableStateOf<Todo?>(null) }
     val todoListState = rememberLazyListState()
     val completedListState = rememberLazyListState()
 
-
-    Scaffold(
-        floatingActionButton = {
-            ExtendedFloatingActionButton(
-                modifier = Modifier.offset(y = 24.dp),
-                onClick = {
-                    editingTodo = null
-                    showBottomSheet = true
-                },
-                icon = {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = "Add Todo"
-                    )
-                },
-                text = {
-                    Text("Add Todo")
-                }
-            )
-        },
-
-        ) { innerPadding ->
-
+    Box(modifier = Modifier.fillMaxSize()) {
         AnimatedContent(
             targetState = selectedTab,
             transitionSpec = {
@@ -124,8 +107,13 @@ fun HomeScreen(selectedTab: Destination, viewModel: TodoViewModel = viewModel())
             LazyColumn(
                 state = listState,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
+                contentPadding = PaddingValues(
+                    start = contentPadding.calculateStartPadding(LocalLayoutDirection.current),
+                    top = contentPadding.calculateTopPadding(),
+                    end = contentPadding.calculateEndPadding(LocalLayoutDirection.current),
+                    bottom = contentPadding.calculateBottomPadding() + 80.dp
+                ),
                 modifier = Modifier
-                    .padding(innerPadding)
                     .fillMaxSize()
                     .padding(horizontal = 16.dp)
             ) {
@@ -168,6 +156,26 @@ fun HomeScreen(selectedTab: Destination, viewModel: TodoViewModel = viewModel())
                 }
             }
         }
+
+        ExtendedFloatingActionButton(
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(end = 16.dp, bottom = 16.dp)
+                .offset(y = 0.dp),
+            onClick = {
+                editingTodo = null
+                showBottomSheet = true
+            },
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "Add Todo"
+                )
+            },
+            text = {
+                Text("Add Todo")
+            }
+        )
     }
     if (showBottomSheet) {
         TodoBottomSheet(

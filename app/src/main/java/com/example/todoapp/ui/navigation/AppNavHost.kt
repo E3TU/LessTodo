@@ -43,12 +43,14 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.todoapp.ui.home.HomeScreen
 import com.example.todoapp.ui.settings.SettingsScreen
+import com.example.todoapp.ui.todo.TodoViewModel
 import kotlinx.coroutines.launch
 
 
@@ -187,21 +189,23 @@ fun AppNavigation() {
                             Text(title)
                         },
                     )
-                    PrimaryTabRow(selectedTabIndex = Destination.entries.indexOf(selectedTab)) {
-                        Destination.entries.forEach { destination ->
-                            Tab(
-                                selected = selectedTab == destination,
-                                onClick = {
-                                    selectedTab = destination
-                                },
-                                text = {
-                                    Text(
-                                        text = destination.label,
-                                        maxLines = 2,
-                                        overflow = TextOverflow.Ellipsis
-                                    )
-                                }
-                            )
+                    if (currentRoute == Screen.Home.route) {
+                        PrimaryTabRow(selectedTabIndex = Destination.entries.indexOf(selectedTab)) {
+                            Destination.entries.forEach { destination ->
+                                Tab(
+                                    selected = selectedTab == destination,
+                                    onClick = {
+                                        selectedTab = destination
+                                    },
+                                    text = {
+                                        Text(
+                                            text = destination.label,
+                                            maxLines = 2,
+                                            overflow = TextOverflow.Ellipsis
+                                        )
+                                    }
+                                )
+                            }
                         }
                     }
                 }
@@ -216,7 +220,12 @@ fun AppNavigation() {
                     .padding(innerPadding)
             ) {
                 composable(Screen.Home.route) {
-                    HomeScreen(selectedTab = selectedTab)
+                    val homeViewModel: TodoViewModel = viewModel()
+                    HomeScreen(
+                        selectedTab = selectedTab,
+                        contentPadding = innerPadding,
+                        viewModel = homeViewModel
+                    )
                 }
                 composable(Screen.Settings.route) {
                     SettingsScreen()
