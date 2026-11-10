@@ -49,7 +49,7 @@ fun SettingsScreen(
                 bottom = contentPadding.calculateBottomPadding() + 16.dp
             )
     ) {
-        Text(text = "Settings", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+        Text(text = "Theme Settings", fontSize = 20.sp, fontWeight = FontWeight.Bold)
 
         Row(
             modifier = Modifier
