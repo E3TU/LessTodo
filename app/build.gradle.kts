@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.todoapp"
+        applicationId = "com.lesstodo.app"
         minSdk = 24
         targetSdk = 37
         versionCode = 1
