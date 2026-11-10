@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -108,14 +107,12 @@ fun HomeScreen(
                 state = listState,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 contentPadding = PaddingValues(
-                    start = contentPadding.calculateStartPadding(LocalLayoutDirection.current),
-                    top = contentPadding.calculateTopPadding(),
-                    end = contentPadding.calculateEndPadding(LocalLayoutDirection.current),
-                    bottom = contentPadding.calculateBottomPadding() + 80.dp
+                    start = contentPadding.calculateStartPadding(LocalLayoutDirection.current) + 16.dp,
+                    top = contentPadding.calculateTopPadding() + 16.dp,
+                    end = contentPadding.calculateEndPadding(LocalLayoutDirection.current) + 16.dp,
+                    bottom = contentPadding.calculateBottomPadding() + 88.dp
                 ),
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 16.dp)
+                modifier = Modifier.fillMaxSize()
             ) {
                 when (tab) {
                     Destination.TODO -> {
@@ -160,8 +157,10 @@ fun HomeScreen(
         ExtendedFloatingActionButton(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(end = 16.dp, bottom = 16.dp)
-                .offset(y = 0.dp),
+                .padding(
+                    end = contentPadding.calculateEndPadding(LocalLayoutDirection.current) + 16.dp,
+                    bottom = contentPadding.calculateBottomPadding() + 16.dp
+                ),
             onClick = {
                 editingTodo = null
                 showBottomSheet = true

@@ -217,7 +217,6 @@ fun AppNavigation() {
                 modifier = Modifier
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.background)
-                    .padding(innerPadding)
             ) {
                 composable(Screen.Home.route) {
                     val homeViewModel: TodoViewModel = viewModel()
@@ -228,7 +227,7 @@ fun AppNavigation() {
                     )
                 }
                 composable(Screen.Settings.route) {
-                    SettingsScreen()
+                    SettingsScreen(contentPadding = innerPadding)
                 }
             }
         }
