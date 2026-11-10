@@ -13,9 +13,9 @@ A clean, Material 3 todo app for Android built with Jetpack Compose. Fewer taps,
 |:---:|:---:|:---:|
 | ![Todos](docs/todos.png) | ![Completed](docs/completed.png) | ![Add or edit](docs/sheet.png) |
 
-| Settings | Dark theme |
-|:---:|:---:|
-| ![Settings](docs/settings.png) | ![Dark theme](docs/dark.png) |
+| Settings |
+|:---:|
+| ![Settings](docs/settings.png) |
 
 Screenshots live in [`docs/`](docs/). See [docs/README.md](docs/README.md) for expected filenames.
 
