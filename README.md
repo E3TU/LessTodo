@@ -1,6 +1,6 @@
 # LessTodo
 
-A clean, Material 3 todo app for Android built with Jetpack Compose. Fewer taps, less clutter — just what you need to get things done.
+LessTodo is a clean, minimal todo app for Android, built with Kotlin, Jetpack Compose, and Material 3. Designed to keep task management simple and distraction-free, with a focus on usability, smooth animations, and a native Android experience.
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-7F52FF?logo=kotlin&logoColor=white)
 ![Compose](https://img.shields.io/badge/Compose-BOM%202026.02.01-4285F4?logo=jetpackcompose&logoColor=white)
