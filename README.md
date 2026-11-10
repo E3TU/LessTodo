@@ -9,15 +9,15 @@ A clean, Material 3 todo app for Android built with Jetpack Compose. Fewer taps,
 
 ## Screenshots
 
-| Todos | Completed | Add / Edit |
-|:---:|:---:|:---:|
-| ![Todos](docs/todos.png) | ![Completed](docs/completed.png) | ![Add or edit](docs/sheet.png) |
+<p align="center">
+<img src="docs/todos.png" width="32%" alt="Active todos" />
+<img src="docs/completed.png" width="32%" alt="Completed todos" />
+<img src="docs/sheet.png" width="32%" alt="Add todo" />
+</p>
 
-| Settings |
-|:---:|
-| ![Settings](docs/settings.png) |
-
-Screenshots live in [`docs/`](docs/). See [docs/README.md](docs/README.md) for expected filenames.
+<p align="center">
+<em>Active todos · Completed todos · Add</em>
+</p>
 
 ## Features
 
