@@ -11,24 +11,9 @@ Designed to keep task management simple and distraction-free, with a focus on us
 
 ## Download
 
-[**Download the latest APK**](https://github.com/E3TU/LessTodo/releases/latest) — Android 7.0+ (API 24), ~13 MB.
+[<img alt="Get it on GitHub" src="https://raw.githubusercontent.com/Kunzisoft/Github-badge/main/get-it-on-github.png" width="240">](https://github.com/E3TU/LessTodo/releases/latest/download)
 
 The APK is signed for sideloading, not for Play Store distribution. Enable "Install unknown apps" for your browser or file manager, then open the downloaded file.
-
-<<<<<<< Updated upstream
-=======
-## Screenshots
-
-| Todos | Completed | Add / Edit |
-|:---:|:---:|:---:|
-| ![Todos](docs/todos.png) | ![Completed](docs/completed.png) | ![Add or edit](docs/sheet.png) |
-
-| Settings |
-|:---:|
-| ![Settings](docs/settings.png) |
-
-Screenshots live in [`docs/`](docs/).
->>>>>>> Stashed changes
 
 ## Features
 
