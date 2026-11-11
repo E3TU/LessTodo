@@ -7,7 +7,28 @@ Designed to keep task management simple and distraction-free, with a focus on us
 ![Compose](https://img.shields.io/badge/Compose-BOM%202026.02.01-4285F4?logo=jetpackcompose&logoColor=white)
 ![minSdk](https://img.shields.io/badge/minSdk-24-3DDC84?logo=android&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-blue)
+[![Latest release](https://img.shields.io/github/v/release/E3TU/LessTodo?label=latest%20release&color=3DDC84&logo=android&logoColor=white)](https://github.com/E3TU/LessTodo/releases/latest)
 
+## Download
+
+[**Download the latest APK**](https://github.com/E3TU/LessTodo/releases/latest) — Android 7.0+ (API 24), ~13 MB.
+
+The APK is signed for sideloading, not for Play Store distribution. Enable "Install unknown apps" for your browser or file manager, then open the downloaded file.
+
+<<<<<<< Updated upstream
+=======
+## Screenshots
+
+| Todos | Completed | Add / Edit |
+|:---:|:---:|:---:|
+| ![Todos](docs/todos.png) | ![Completed](docs/completed.png) | ![Add or edit](docs/sheet.png) |
+
+| Settings |
+|:---:|
+| ![Settings](docs/settings.png) |
+
+Screenshots live in [`docs/`](docs/).
+>>>>>>> Stashed changes
 
 ## Features
 
@@ -38,7 +59,7 @@ Designed to keep task management simple and distraction-free, with a focus on us
 <em>Active todos · Completed todos · Add</em>
 </p>
 
-## Getting started
+## Build from source
 
 ### Prerequisites
 
@@ -66,9 +87,13 @@ Android Studio creates this automatically on first open. It is git-ignored and m
 
 ### Install
 
+Prefer a prebuilt binary? Grab the APK from [Releases](https://github.com/E3TU/LessTodo/releases/latest). Or install what you just built:
+
 ```bash
 ./gradlew installDebug
 ```
+
+> Self-built APKs use a different signing key than the published one. Uninstall the released build first before installing your own.
 
 ## Project status
 
